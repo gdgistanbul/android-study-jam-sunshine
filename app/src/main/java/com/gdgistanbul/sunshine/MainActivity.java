@@ -18,8 +18,6 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    private static ArrayAdapter<String> mForecastAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
             // Now that we have some dummy forecast data, create an ArrayAdapter.
             // The ArrayAdapter will take data from a source (like our dummy forecast) and
             // use it to populate the ListView it's attached to.
-            mForecastAdapter = new ArrayAdapter<String>(
+            ArrayAdapter<String> mForecastAdapter = new ArrayAdapter<>(
                     getActivity(), // The current context (this activity)
                     R.layout.list_item_forecast, // The name of the layout ID.
                     R.id.list_item_forecast_textview, // The ID of the textview to populate.
