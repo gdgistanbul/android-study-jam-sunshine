@@ -35,6 +35,8 @@ import java.util.List;
  */
 public class ForecastFragment extends Fragment {
 
+    private ArrayAdapter<String> mForecastAdapter;
+
     public ForecastFragment() {
     }
 
@@ -78,7 +80,7 @@ public class ForecastFragment extends Fragment {
         // Now that we have some dummy forecast data, create an ArrayAdapter.
         // The ArrayAdapter will take data from a source (like our dummy forecast) and
         // use it to populate the ListView it's attached to.
-        ArrayAdapter<String> mForecastAdapter = new ArrayAdapter<>(
+        mForecastAdapter = new ArrayAdapter<>(
                 getActivity(), // The current context (this activity)
                 R.layout.list_item_forecast, // The name of the layout ID.
                 R.id.list_item_forecast_textview, // The ID of the textview to populate.
@@ -195,6 +197,14 @@ public class ForecastFragment extends Fragment {
             }
             return resultStrs;
 
+        }
+
+        @Override
+        protected void onPostExecute(String[] strings) {
+            mForecastAdapter.clear();
+            for (String item : strings) {
+                mForecastAdapter.add(item);
+            }
         }
 
         @Override
